@@ -26,4 +26,5 @@ pkg
 bin
 remote.iml
 src/github.com
+src/main
 log

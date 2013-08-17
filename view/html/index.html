@@ -2,7 +2,7 @@
 <html lang="cn">
   <head>
     <meta charset="utf-8">
-    <title>首页 &middot; Remote As Local</title>
+    <title>首页 &middot; 远程时代</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -32,7 +32,7 @@
       top: 0;
       left: 0;
       right: 0;
-      z-index: 10;
+      z-index: 11;
       margin-top: 20px;
       margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
     }
@@ -43,8 +43,6 @@
     /* Remove border and change up box shadow for more contrast */
     .navbar .navbar-inner {
       border: 0;
-      -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.25);
-         -moz-box-shadow: 0 2px 10px rgba(0,0,0,.25);
               box-shadow: 0 2px 10px rgba(0,0,0,.25);
     }
 
@@ -85,7 +83,7 @@
       height: 80px;
       margin-top: 0;
       font-size: 120px;
-      text-shadow: 0 1px 1px rgba(0,0,0,.4);
+      text-shadow: 0 5px 1px rgba(0,0,0,.4);
       background-color: transparent;
       border: 0;
       z-index: 10;
@@ -138,37 +136,6 @@
     }
 
 
-    /* Featurettes
-    ------------------------- */
-
-    .featurette-divider {
-      margin: 80px 0; /* Space out the Bootstrap <hr> more */
-    }
-    .featurette {
-      padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
-      overflow: hidden; /* Vertically center images part 2: clear their floats. */
-    }
-    .featurette-image {
-      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
-    }
-
-    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
-    .featurette-image.pull-left {
-      margin-right: 40px;
-    }
-    .featurette-image.pull-right {
-      margin-left: 40px;
-    }
-
-    /* Thin out the marketing headings */
-    .featurette-heading {
-      font-size: 50px;
-      font-weight: 300;
-      line-height: 1;
-      letter-spacing: -1px;
-    }
-
-
 
     /* RESPONSIVE CSS
     -------------------------------------------------- */
@@ -179,6 +146,9 @@
         margin-bottom: 0;
         width: auto;
       }
+		.carousel .container {
+
+		}
       .navbar-inner {
         border-radius: 0;
         margin: -20px 0;
@@ -190,18 +160,6 @@
       .carousel img {
         width: auto;
         height: 500px;
-      }
-
-      .featurette {
-        height: auto;
-        padding: 0;
-      }
-      .featurette-image.pull-left,
-      .featurette-image.pull-right {
-        display: block;
-        float: none;
-        max-width: 40%;
-        margin: 0 auto 20px;
       }
     }
 
@@ -216,9 +174,7 @@
         margin-left: -20px;
         margin-right: -20px;
       }
-      .carousel .container {
 
-      }
       .carousel .item {
         height: 300px;
       }
@@ -240,10 +196,6 @@
 
       .marketing .span4 + .span4 {
         margin-top: 40px;
-      }
-
-      .featurette-heading {
-        font-size: 30px;
       }
       .featurette .lead {
         font-size: 18px;
@@ -278,15 +230,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="#">Remote As Local</a>
+            <a class="brand" href="index.html">远程时代</a>
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="index.html">首页</a></li>
-                <li><a href="#about">关于我们</a></li>
-                <li><a href="#contact">联系我们</a></li>
-                <li><a href="#about">加入我们</a></li>
-              </ul>
+				  <li><a href="index.html">团队</a></li>
+				  <li><a href="#">招聘</a></li>
+				  <li><a href="#">求职</a></li>
+				  <li><a href="index.html">个人</a></li>
+			  </ul>
             </div><!--/.nav-collapse -->
           </div><!-- /.navbar-inner -->
         </div><!-- /.navbar -->
@@ -304,8 +256,8 @@
           <img src="../img/examples/slide-01.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>远程即本地</h1>
-              <p class="lead">开启我们的远程工作之旅...</p>
+              <h1>远程时代</h1>
+              <p class="lead">开启我们的远程事业之旅...</p>
               <a class="btn btn-large btn-primary" href="signin.html">登录</a>
             </div>
           </div>
@@ -314,7 +266,7 @@
           <img src="../img/examples/slide-02.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>如何远程工作</h1>
+              <h1>远程工作</h1>
               <p class="lead">在家里，在旅游，到你喜欢的地方去工作吧</p>
               <a class="btn btn-large btn-primary" href="#">更多</a>
             </div>
@@ -324,9 +276,9 @@
           <img src="../img/examples/slide-03.jpg" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>有哪些远程xx</h1>
-              <p class="lead">太多了...</p>
-              <a class="btn btn-large btn-primary" href="#">看看</a>
+              <h1>远程梦</h1>
+              <p class="lead">你我都能拥有</p>
+              <a class="btn btn-large btn-primary" href="#">了解</a>
             </div>
           </div>
         </div>
@@ -336,56 +288,9 @@
     </div><!-- /.carousel -->
 
 
-
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
-
     <div class="container marketing">
-
-      <!-- Three columns of text below the carousel -->
-      <div class="row">
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>组建团队</h2>
-          <p>组建一支全新实力的团队</p>
-          <p><a class="btn" href="#">进入 &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>加入团队</h2>
-          <p>看看哪支团队适合你的加入</p>
-          <p><a class="btn" href="#">进入 &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" data-src="holder.js/140x140">
-          <h2>招收队员</h2>
-          <p>看看哪些人才适合加入你的团队</p>
-          <p><a class="btn" href="#">进入 &raquo;</a></p>
-        </div><!-- /.span4 -->
-          <div class="span4">
-              <img class="img-circle" data-src="holder.js/140x140">
-              <h2>投资合作</h2>
-              <p>寻找你觉得不错的团队投资合作</p>
-              <p><a class="btn" href="#">进入 &raquo;</a></p>
-          </div><!-- /.span4 -->
-          <div class="span4">
-              <img class="img-circle" data-src="holder.js/140x140">
-              <h2>寻求合作</h2>
-              <p>寻求投资方协助你更好地行进</p>
-              <p><a class="btn" href="#">进入 &raquo;</a></p>
-          </div><!-- /.span4 -->
-          <div class="span4">
-              <img class="img-circle" data-src="holder.js/140x140">
-              <h2>作品展廊</h2>
-              <p>作品、实力展览区</p>
-              <p><a class="btn" href="#">进入 &raquo;</a></p>
-          </div><!-- /.span4 -->
-      </div><!-- /.row -->
-
       <!-- FOOTER -->
       <footer>
-        <p class="pull-right"><a href="#">返回顶部</a></p>
         <p>&copy; 2013 Kong, Inc. &middot;</p>
       </footer>
 
