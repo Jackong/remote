@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cn" ng-app>
+<html lang="cn">
 <head>
     <meta charset="utf-8">
     <title>Home</title>
@@ -33,11 +33,9 @@
 		}
 
 	</style>
-	</head>
+</head>
 <body>
-
-	<div ng-controller="User">
-		<form class="form-signin">
+		<form ng-controller="ctrl.User" class="form-signin">
 			<h2 class="form-signin-heading">登录</h2>
 			<input type="text" class="input-block-level" placeholder="Email" ng-model="email">
 			<input type="password" class="input-block-level" placeholder="密码" ng-model="password">
@@ -47,10 +45,6 @@
 			<button ng-click="login()" class="btn btn-large btn-primary" type="submit">登录</button>
 			<a ng-click="register()" href="#"> 注册</a>
 		</form>
-
-	</div>
-
-	<script src="../js/plugin/angular.js"></script>
-	<script src="../js/ctrl/User.js"></script>
+<script src="../js/ctrl/User.js"></script>
 </body>
 </html>

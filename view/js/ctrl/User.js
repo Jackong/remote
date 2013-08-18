@@ -5,24 +5,23 @@
  * Time: 下午6:54
  * To change this template use File | Settings | File Templates.
  */
-function User($scope, $http) {
+ctrl.User = function($scope, $http) {
     $scope.remember = true;
-    $scope.login = function() {
+    $scope.login = function () {
         $http.get("/login",
             {
-                params:{
+                params: {
                     "email": $scope.email,
                     "password": $scope.password,
                     "rememberMe": $scope.rememberMe
                 }
             })
-            .success(function(data, status) {
+            .success(function (data, status) {
                 $scope.isLogin = true;
             }
         );
     };
 
-    $scope.register = function() {
-
+    $scope.register = function () {
     };
-}
+};
