@@ -7,7 +7,7 @@
  */
 ctrl.Nav = function ($scope) {
     $scope.tabs = [
-        {id: "home", status: "active", name: "首页"},
+        {id: "home", status: "active", name: "首页", scripts:['../js/ctrl/User.js']},
         {id: "recruit", status: "", name: "招聘"},
         {id: "job", status: "", name: "求职"},
         {id: "team", status: "", name: "团队"},
@@ -21,6 +21,5 @@ ctrl.Nav = function ($scope) {
         tab.status = "active";
         $scope.actived = tab;
     };
-
     $scope.nav($scope.tabs[0]);
 };
