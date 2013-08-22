@@ -7,3 +7,4 @@
  */
 var ctrl = new function(){};
 var app = new function(){};
+var mod = new function(){};
