@@ -6,8 +6,8 @@
 mod.prov.config(['$provide', '$routeProvider', function($provide, $routeProvider) {
     $provide.provider('Router', function() {
         this.when = function(path, route) {
-            if (typeof route.controller.Deps !== 'undefined') {
-                var deps = route.controller.Deps;
+            if (typeof route.controller.deps !== 'undefined') {
+                var deps = route.controller.deps;
                 route.resolve = ['$q', '$timeout', function($q, $timeout) {
                     var defer = $q.defer();
                     var timer = function() {

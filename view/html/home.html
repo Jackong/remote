@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Jackong">
 	<style type="text/css">
-		.form-signin {
+		.form-sign {
 			max-width: 300px;
 			padding: 19px 29px 29px;
 			margin: 0 auto 20px;
@@ -20,12 +20,12 @@
 			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 			box-shadow: 0 1px 2px rgba(0,0,0,.05);
 		}
-		.form-signin .form-signin-heading,
-		.form-signin .checkbox {
+		.form-sign .form-sign-heading,
+		.form-sign .checkbox {
 			margin-bottom: 10px;
 		}
-		.form-signin input[type="text"],
-		.form-signin input[type="password"] {
+		.form-sign input[type="text"],
+		.form-sign input[type="password"] {
 			font-size: 16px;
 			height: auto;
 			margin-bottom: 15px;
@@ -35,15 +35,31 @@
 	</style>
 </head>
 <body>
-		<form ng-controller="ctrl.User" class="form-signin">
-			<h2 class="form-signin-heading">登录</h2>
-			<input type="text" class="input-block-level" placeholder="Email" ng-model="email">
-			<input type="password" class="input-block-level" placeholder="密码" ng-model="password">
-			<label class="checkbox">
-				<input type="checkbox" ng-model="remember"> 记住我
-			</label>
-			<button ng-click="login()" class="btn btn-large btn-primary" type="submit">登录</button>
-			<a ng-click="register()" href="#"> 注册</a>
-		</form>
+<div ng-controller="ctrl.User">
+	<div ng-switch="status">
+		<div ng-switch-default="sign-in">
+			<form class="form-sign">
+				<h2 class="form-sign-heading">登录</h2>
+				<input type="text" class="input-block-level" placeholder="Email" ng-model="email">
+				<input type="password" class="input-block-level" placeholder="密码" ng-model="password">
+				<label class="checkbox">
+					<input type="checkbox" ng-model="remember"> 记住我
+				</label>
+				<button ng-click="signIn()" class="btn btn-large btn-primary" type="submit">登录</button>
+				<a ng-click="turn('sign-up')" href="#{{activated.id}}">注册</a>
+			</form>
+		</div>
+		<div ng-switch-when="sign-up">
+			<form class="form-sign">
+				<h2 class="form-sign-heading">注册</h2>
+				<input type="text" class="input-block-level" placeholder="Email" ng-model="email">
+				<input type="password" class="input-block-level" placeholder="密码" ng-model="password">
+				<input type="password" class="input-block-level" placeholder="确认密码" ng-model="repassword">
+				<button ng-click="signUp()" class="btn btn-large btn-primary" type="submit">注册</button>
+				<a ng-click="turn('sign-in')" href="#{{activated.id}}">登录</a>
+			</form>
+		</div>
+	</div>
+</div>
 </body>
 </html>

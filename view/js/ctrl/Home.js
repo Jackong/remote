@@ -5,5 +5,10 @@
  */
 ctrl.Home = function($scope) {
 
+    $scope.turn = function(status) {
+        $scope.status = status;
+    }
 };
-ctrl.Home.Deps = ['ctrl.User'];
+
+ctrl.Home.scripts = ['../js/ctrl/User.js'];
+ctrl.Home.deps = ['ctrl.User'];

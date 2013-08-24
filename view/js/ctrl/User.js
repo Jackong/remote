@@ -7,7 +7,7 @@
  */
 ctrl.User = function($scope, $http) {
     $scope.remember = true;
-    $scope.login = function () {
+    $scope.signIn = function () {
         $http.get("/login",
             {
                 params: {
@@ -22,6 +22,6 @@ ctrl.User = function($scope, $http) {
         );
     };
 
-    $scope.register = function () {
+    $scope.signUp = function () {
     };
 };

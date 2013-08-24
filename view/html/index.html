@@ -71,14 +71,14 @@
 			<div class="navbar-inner">
 				<div class="container">
 					<ul class="nav">
-						<li ng-repeat="tab in tabs" ng-click="nav(tab)" ng-class="tab.status"><a href="#/{{tab.id}}">{{tab.name}}</a></li>
+						<li ng-repeat="tab in tabs" ng-click="nav(tab)" ng-class="tab.status"><a href="#{{tab.id}}">{{tab.name}}</a></li>
 					</ul>
 				</div>
 			</div>
 		</div><!-- /.navbar -->
 	</div>
 	<hr>
-	<script type="text/javascript" ng-repeat="script in actived.scripts" ng-src="{{script}}"></script>
+	<script type="text/javascript" ng-repeat="script in activated.scripts" ng-src="{{script}}"></script>
 	<div ng-view></div>
 	<hr>
 	<footer>
