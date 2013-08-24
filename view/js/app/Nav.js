@@ -12,8 +12,7 @@ app.Nav.config(
             {
                 templateUrl:'home.html',
                 controller:ctrl.Home
-            },
-            ['ctrl.User']).
+            }).
             when('/recruit',
             {
                 templateUrl:'recruit.html',
@@ -23,7 +22,8 @@ app.Nav.config(
             {
                 templateUrl:'job.html',
                 controller:ctrl.Job
-            }).
+            },
+            ['ctrl.Job']).
             when('/team',
             {
                 templateUrl:'team.html',
