@@ -6,3 +6,6 @@
 ctrl.Team = function($scope) {
 
 };
+
+ctrl.Team.path = '/team';
+ctrl.Team.url = 'team.html';

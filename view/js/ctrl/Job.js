@@ -6,3 +6,6 @@
 ctrl.Job = function($scope) {
 
 };
+
+ctrl.Job.path = '/job';
+ctrl.Job.url = 'job.html';

@@ -6,3 +6,6 @@
 ctrl.Individual = function($scope) {
 
 };
+
+ctrl.Individual.path = '/individual';
+ctrl.Individual.url = 'individual.html';

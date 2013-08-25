@@ -6,3 +6,6 @@
 ctrl.Recruit = function($scope) {
 
 };
+
+ctrl.Recruit.path = '/recruit';
+ctrl.Recruit.url = 'recruit.html';

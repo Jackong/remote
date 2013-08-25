@@ -5,6 +5,15 @@
  */
 mod.prov.config(['$provide', '$routeProvider', function($provide, $routeProvider) {
     $provide.provider('Router', function() {
+        this.attach = function(ctrls) {
+            for (var i = 0; i < ctrls.length; i++) {
+                var ctrl = ctrls[i];
+                this.when(ctrl.path, {templateUrl: ctrl.url, controller:ctrl});
+            }
+            $routeProvider.otherwise({redirectTo:ctrls[0].path});
+            return this;
+        };
+
         this.when = function(path, route) {
             if (typeof route.controller.deps !== 'undefined') {
                 var deps = route.controller.deps;
@@ -29,11 +38,6 @@ mod.prov.config(['$provide', '$routeProvider', function($provide, $routeProvider
                 }];
             }
             $routeProvider.when(path, route);
-            return this;
-        };
-
-        this.otherwise = function(route) {
-            $routeProvider.otherwise(route);
             return this;
         };
 

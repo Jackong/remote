@@ -46,7 +46,7 @@
 					<input type="checkbox" ng-model="remember"> 记住我
 				</label>
 				<button ng-click="signIn()" class="btn btn-large btn-primary" type="submit">登录</button>
-				<a ng-click="turn('sign-up')" href="#{{activated.id}}">注册</a>
+				<a ng-click="turn('sign-up')" href="#{{activated.path}}">注册</a>
 			</form>
 		</div>
 		<div ng-switch-when="sign-up">
@@ -56,7 +56,7 @@
 				<input type="password" class="input-block-level" placeholder="密码" ng-model="password">
 				<input type="password" class="input-block-level" placeholder="确认密码" ng-model="repassword">
 				<button ng-click="signUp()" class="btn btn-large btn-primary" type="submit">注册</button>
-				<a ng-click="turn('sign-in')" href="#{{activated.id}}">登录</a>
+				<a ng-click="turn('sign-in')" href="#{{activated.path}}">登录</a>
 			</form>
 		</div>
 	</div>
