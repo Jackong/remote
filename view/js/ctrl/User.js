@@ -6,9 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 ctrl.User = function($scope, $http) {
-    $scope.remember = true;
     $scope.signIn = function () {
-        $http.get("/login",
+        if ($scope.email.length <= 0 || $scope.password.length < 6) {
+            return;
+        }
+        $http.post("/auth",
             {
                 params: {
                     "email": $scope.email,
@@ -17,11 +19,27 @@ ctrl.User = function($scope, $http) {
                 }
             })
             .success(function (data, status) {
-                $scope.isLogin = true;
             }
         );
     };
 
     $scope.signUp = function () {
+        if ($scope.email.length <= 0 || $scope.password.length < 6 || $scope.password != $scope.repassword) {
+            return;
+        }
+        $http.put("/user",
+            {
+                params: {
+                    "email": $scope.email,
+                    "password": $scope.password
+                }
+            })
+            .success(function (data, status) {
+            }
+        );
     };
+
+    $scope.turn = function() {
+        $scope.status = !$scope.status;
+    }
 };

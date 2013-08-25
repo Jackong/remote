@@ -2,7 +2,7 @@
 <project>
 	<server>
 		<name>web</name>
-		<addr></addr>
+		<addr>127.0.0.1:80</addr>
 	</server>
 	<dir>
 		<log>log</log>

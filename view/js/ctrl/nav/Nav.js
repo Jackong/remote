@@ -8,10 +8,10 @@
 ctrl.Nav = function ($scope, $location) {
     $scope.tabs = [
         {path: ctrl.Home.path, name: "首页", scripts:ctrl.Home.scripts},
-        {path: "/recruit", name: "招聘"},
-        {path: "/job", name: "求职"},
-        {path: "/team",  name: "团队"},
-        {path: "/individual", name: "个人"}
+        {path: ctrl.Recruit.path, name: "招聘", scripts:ctrl.Recruit.scripts},
+        {path: ctrl.Job.path, name: "求职", scripts:ctrl.Job.scripts},
+        {path: ctrl.Team.path,  name: "团队", scripts:ctrl.Team.scripts},
+        {path: ctrl.Individual.path, name: "个人", scripts:ctrl.Individual.scripts}
     ];
 
     $scope.nav = function (tab) {

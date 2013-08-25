@@ -4,9 +4,7 @@
  * Time: 下午7:27
  */
 ctrl.Home = function($scope) {
-    $scope.turn = function(status) {
-        $scope.status = status;
-    };
+
 };
 
 ctrl.Home.path = '/home';
