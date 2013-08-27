@@ -19,8 +19,10 @@ mod.prov.config(['$provide', '$routeProvider', function($provide, $routeProvider
                 var deps = route.controller.deps;
                 route.resolve = ['$q', '$timeout', function($q, $timeout) {
                     var defer = $q.defer();
+	                var counter = 0;
                     var timer = function() {
-                        for (var i = 0; i < deps.length; i++) {
+	                    var len = deps.length;
+                        for (var i = 0; i < len; i++) {
                             if (typeof eval(deps[i]) !== 'undefined') {
                                 deps.pop();
                             } else {
@@ -31,6 +33,10 @@ mod.prov.config(['$provide', '$routeProvider', function($provide, $routeProvider
                             defer.resolve();
                             return;
                         }
+	                    counter++;
+	                    if (counter > len * 10) {
+		                    return defer.reject();
+	                    }
                         $timeout(timer, 20);
                     };
                     timer();

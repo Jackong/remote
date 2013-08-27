@@ -9,5 +9,5 @@ ctrl.Home = function($scope) {
 
 ctrl.Home.path = '/home';
 ctrl.Home.url = 'home.html';
-ctrl.Home.scripts = ['../js/ctrl/User.js'];
-ctrl.Home.deps = ['ctrl.User'];
+ctrl.Home.scripts = ['../js/ctrl/User.js', '../js/lib/hash/md5-min.js'];
+ctrl.Home.deps = ['ctrl.User', 'hex_md5'];

@@ -4,3 +4,4 @@
  * Time: 下午11:04
  */
 mod.prov = angular.module('mod.prov', []);
+mod.service = angular.module('mod.service', []);

@@ -4,3 +4,4 @@ bin\main.exe
 del bin\main.exe
 go install main
 bin\main.exe
+pause
