@@ -16,8 +16,7 @@
 			-moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
 			box-shadow: 0 1px 2px rgba(0,0,0,.05);
 		}
-		.form-sign .form-sign-heading,
-		.form-sign .checkbox {
+		.form-sign .form-sign-heading{
 			margin-bottom: 10px;
 		}
 		.form-sign input[type="email"],
@@ -31,15 +30,12 @@
 	</style>
 </head>
 <body>
-<div ng-controller="ctrl.User" ng-init="status=true;rememberMe=true;email='';password='';">
+<div ng-controller="ctrl.User" ng-init="status=true;email='';password='';">
 		<div ng-show="status">
 			<form class="form-sign">
 				<h2 class="form-sign-heading">登录</h2>
 				<input type="email" class="input-block-level" placeholder="Email" ng-model="email" required>
 				<input type="password" class="input-block-level" placeholder="密码" ng-model="password" required>
-				<label class="checkbox">
-					<input type="checkbox" ng-model="rememberMe"> 记住我
-				</label>
 				<button ng-click="signIn()" class="btn btn-large btn-primary" type="submit">登录</button>
 				<button ng-click="turn()" class="btn btn-large btn-link">注册</button>
 			</form>

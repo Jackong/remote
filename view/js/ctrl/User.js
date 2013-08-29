@@ -13,8 +13,7 @@ ctrl.User = function ($scope, HttpService) {
 		HttpService.post("/auth",
 			{
 				email: $scope.email,
-				password: $scope.password,
-				rememberMe: $scope.rememberMe
+				password: $scope.password
 			})
 			.success(function (data, status) {
 			}
