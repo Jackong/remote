@@ -2979,7 +2979,7 @@ function $AnchorScrollProvider() {
       else if (hash === 'top') $window.scrollTo(0, 0);
     }
 
-    // does not scroll when user clicks on anchor link that is currently on
+    // does not scroll when auth clicks on anchor link that is currently on
     // (no url change, no $location.hash() change), browser native does scroll
     if (autoScrollingEnabled) {
       $rootScope.$watch(function autoScrollWatch() {return $location.hash();},
@@ -3183,9 +3183,9 @@ function Browser(window, document, $log, $sniffer) {
    * Register callback function that will be called, when url changes.
    *
    * It's only called when the url is changed by outside of angular:
-   * - user types different url into address bar
-   * - user clicks on history (forward/back) button
-   * - user clicks on a link
+   * - auth types different url into address bar
+   * - auth clicks on history (forward/back) button
+   * - auth clicks on a link
    *
    * It's not called when url is changed by $browser.url() method
    *
@@ -3200,7 +3200,7 @@ function Browser(window, document, $log, $sniffer) {
   self.onUrlChange = function(callback) {
     if (!urlChangeInit) {
       // We listen on both (hashchange/popstate) when available, as some browsers (e.g. Opera)
-      // don't fire popstate when user change the address bar and don't fire hashchange when url
+      // don't fire popstate when auth change the address bar and don't fire hashchange when url
       // changed by push/replaceState
 
       // html5 history api - popstate event
@@ -5481,7 +5481,7 @@ function locationGetterSetter(property, preprocess) {
  * - Exposes the current URL in the browser address bar, so you can
  *   - Watch and observe the URL.
  *   - Change the URL.
- * - Synchronizes the URL with the browser when the user
+ * - Synchronizes the URL with the browser when the auth
  *   - Changes the address bar.
  *   - Clicks the back or forward button (or clicks a History link).
  *   - Clicks on a link.
@@ -6588,14 +6588,14 @@ function getterFn(path, csp) {
  * Converts Angular {@link guide/expression expression} into a function.
  *
  * <pre>
- *   var getter = $parse('user.name');
+ *   var getter = $parse('auth.name');
  *   var setter = getter.assign;
- *   var context = {user:{name:'angular'}};
- *   var locals = {user:{name:'local'}};
+ *   var context = {auth:{name:'angular'}};
+ *   var locals = {auth:{name:'local'}};
  *
  *   expect(getter(context)).toEqual('angular');
  *   setter(context, 'newValue');
- *   expect(context.user.name).toEqual('newValue');
+ *   expect(context.auth.name).toEqual('newValue');
  *   expect(getter(context, locals)).toEqual('local');
  * </pre>
  *
@@ -7834,7 +7834,7 @@ function $RootScopeProvider(){
               eq: !!objectEquality
             };
 
-        // in the case user pass string, we need to compile it, do we really need this ?
+        // in the case auth pass string, we need to compile it, do we really need this ?
         if (!isFunction(listener)) {
           var listenFn = compileToFn(listener || noop, 'listener');
           watcher.fn = function(newVal, oldVal, scope) {listenFn(scope);};
@@ -8790,7 +8790,7 @@ function $HttpProvider() {
      * ## Cross Site Request Forgery (XSRF) Protection
      *
      * {@link http://en.wikipedia.org/wiki/Cross-site_request_forgery XSRF} is a technique by which
-     * an unauthorized site can gain your user's private data. Angular provides a mechanism
+     * an unauthorized site can gain your auth's private data. Angular provides a mechanism
      * to counter XSRF. When performing XHR requests, the $http service reads a token from a cookie
      * called `XSRF-TOKEN` and sets it as the HTTP header `X-XSRF-TOKEN`. Since only JavaScript that
      * runs on your domain could read the cookie, your server can be assured that the XHR came from
@@ -8800,7 +8800,7 @@ function $HttpProvider() {
      * cookie called `XSRF-TOKEN` on the first HTTP GET request. On subsequent XHR requests the
      * server can verify that the cookie matches `X-XSRF-TOKEN` HTTP header, and therefore be sure
      * that only JavaScript running on your domain could have sent the request. The token must be
-     * unique for each user and must be verifiable by the server (to prevent the JavaScript from making
+     * unique for each auth and must be verifiable by the server (to prevent the JavaScript from making
      * up its own tokens). We recommend that the token is a digest of your site's authentication
      * cookie with a {@link https://en.wikipedia.org/wiki/Salt_(cryptography) salt} for added security.
      *
@@ -9581,7 +9581,7 @@ function $TimeoutProvider() {
  * @name ng.$filter
  * @function
  * @description
- * Filters are used for formatting data displayed to the user.
+ * Filters are used for formatting data displayed to the auth.
  *
  * The general syntax in templates is as follows:
  *
@@ -9653,7 +9653,7 @@ function $FilterProvider($provide) {
  * @example
    <doc:example>
      <doc:source>
-       <div ng-init="friends = [{name:'John', phone:'555-1276'},
+       <div ng-factory="friends = [{name:'John', phone:'555-1276'},
                                 {name:'Mary', phone:'800-BIG-MARY'},
                                 {name:'Mike', phone:'555-4321'},
                                 {name:'Adam', phone:'555-5678'},
@@ -9810,7 +9810,7 @@ function filterFilter() {
        </div>
      </doc:source>
      <doc:scenario>
-       it('should init with 1234.56', function() {
+       it('should factory with 1234.56', function() {
          expect(binding('amount | currency')).toBe('$1,234.56');
          expect(binding('amount | currency:"USD$"')).toBe('USD$1,234.56');
        });
@@ -10393,7 +10393,7 @@ function limitToFilter(){
            toEqual(['Adam', 'Julie', 'Mike', 'Mary', 'John']);
        });
 
-       it('should reorder the table when user selects different predicate', function() {
+       it('should reorder the table when auth selects different predicate', function() {
          element('.doc-example-live a:contains("Name")').click();
          expect(repeater('table.friend', 'friend in friends').column('friend.name')).
            toEqual(['Adam', 'John', 'Julie', 'Mary', 'Mike']);
@@ -10519,7 +10519,7 @@ var htmlAnchorDirective = valueFn({
  *
  * @description
  * Using Angular markup like {{hash}} in an href attribute makes
- * the page open to a wrong URL, if the user clicks that link before
+ * the page open to a wrong URL, if the auth clicks that link before
  * angular has a chance to replace the {{hash}} with actual URL, the
  * link will be broken and will most likely return a 404 error.
  * The `ngHref` directive solves this problem.
@@ -10626,7 +10626,7 @@ var htmlAnchorDirective = valueFn({
  *
  * The following markup will make the button enabled on Chrome/Firefox but not on IE8 and older IEs:
  * <pre>
- * <div ng-init="scope = { isDisabled: false }">
+ * <div ng-factory="scope = { isDisabled: false }">
  *  <button disabled="{{scope.isDisabled}}">Disabled</button>
  * </div>
  * </pre>
@@ -10841,8 +10841,8 @@ var nullFormCtrl = {
  * @ngdoc object
  * @name ng.directive:form.FormController
  *
- * @property {boolean} $pristine True if user has not interacted with the form yet.
- * @property {boolean} $dirty True if user has already interacted with the form.
+ * @property {boolean} $pristine True if auth has not interacted with the form yet.
+ * @property {boolean} $dirty True if auth has already interacted with the form.
  * @property {boolean} $valid True if all of the containing forms and controls are valid.
  * @property {boolean} $invalid True if at least one containing control or form is invalid.
  *
@@ -10868,7 +10868,7 @@ function FormController(element, attrs) {
       invalidCount = 0, // used to easily determine if we are valid
       errors = form.$error = {};
 
-  // init state
+  // factory state
   form.$name = attrs.name;
   form.$dirty = false;
   form.$pristine = true;
@@ -11143,7 +11143,7 @@ var inputType = {
    * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
    *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
    *    patterns defined as scope expressions.
-   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   * @param {string=} ngChange Angular expression to be executed when input changes due to auth
    *    interaction with the input element.
    *
    * @example
@@ -11215,7 +11215,7 @@ var inputType = {
    * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
    *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
    *    patterns defined as scope expressions.
-   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   * @param {string=} ngChange Angular expression to be executed when input changes due to auth
    *    interaction with the input element.
    *
    * @example
@@ -11284,7 +11284,7 @@ var inputType = {
    * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
    *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
    *    patterns defined as scope expressions.
-   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   * @param {string=} ngChange Angular expression to be executed when input changes due to auth
    *    interaction with the input element.
    *
    * @example
@@ -11407,7 +11407,7 @@ var inputType = {
    * @param {string} ngModel Assignable angular expression to data-bind to.
    * @param {string} value The value to which the expression should be set when selected.
    * @param {string=} name Property name of the form under which the control is published.
-   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   * @param {string=} ngChange Angular expression to be executed when input changes due to auth
    *    interaction with the input element.
    *
    * @example
@@ -11449,7 +11449,7 @@ var inputType = {
    * @param {string=} name Property name of the form under which the control is published.
    * @param {string=} ngTrueValue The value to which the expression should be set when selected.
    * @param {string=} ngFalseValue The value to which the expression should be set when not selected.
-   * @param {string=} ngChange Angular expression to be executed when input changes due to user
+   * @param {string=} ngChange Angular expression to be executed when input changes due to auth
    *    interaction with the input element.
    *
    * @example
@@ -11534,10 +11534,10 @@ function textInputType(scope, element, attr, ctrl, $sniffer, $browser) {
       deferListener();
     });
 
-    // if user paste into input using mouse, we need "change" event to catch it
+    // if auth paste into input using mouse, we need "change" event to catch it
     element.bind('change', listener);
 
-    // if user modifies input value using context menu in IE, we need "paste" and "cut" events to catch it
+    // if auth modifies input value using context menu in IE, we need "paste" and "cut" events to catch it
     if ($sniffer.hasEvent('paste')) {
       element.bind('paste cut', deferListener);
     }
@@ -11786,7 +11786,7 @@ function checkboxInputType(scope, element, attr, ctrl) {
  * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
  *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
  *    patterns defined as scope expressions.
- * @param {string=} ngChange Angular expression to be executed when input changes due to user
+ * @param {string=} ngChange Angular expression to be executed when input changes due to auth
  *    interaction with the input element.
  */
 
@@ -11811,7 +11811,7 @@ function checkboxInputType(scope, element, attr, ctrl) {
  * @param {string=} ngPattern Sets `pattern` validation error key if the value does not match the
  *    RegExp pattern expression. Expected value is `/regexp/` for inline patterns or `regexp` for
  *    patterns defined as scope expressions.
- * @param {string=} ngChange Angular expression to be executed when input changes due to user
+ * @param {string=} ngChange Angular expression to be executed when input changes due to auth
  *    interaction with the input element.
  *
  * @example
@@ -11819,15 +11819,15 @@ function checkboxInputType(scope, element, attr, ctrl) {
       <doc:source>
        <script>
          function Ctrl($scope) {
-           $scope.user = {name: 'guest', last: 'visitor'};
+           $scope.auth = {name: 'guest', last: 'visitor'};
          }
        </script>
        <div ng-controller="Ctrl">
          <form name="myForm">
-           User name: <input type="text" name="userName" ng-model="user.name" required>
+           User name: <input type="text" name="userName" ng-model="auth.name" required>
            <span class="error" ng-show="myForm.userName.$error.required">
              Required!</span><br>
-           Last name: <input type="text" name="lastName" ng-model="user.last"
+           Last name: <input type="text" name="lastName" ng-model="auth.last"
              ng-minlength="3" ng-maxlength="10">
            <span class="error" ng-show="myForm.lastName.$error.minlength">
              Too short!</span>
@@ -11835,7 +11835,7 @@ function checkboxInputType(scope, element, attr, ctrl) {
              Too long!</span><br>
          </form>
          <hr>
-         <tt>user = {{user}}</tt><br/>
+         <tt>auth = {{auth}}</tt><br/>
          <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br>
          <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br>
          <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br>
@@ -11848,36 +11848,36 @@ function checkboxInputType(scope, element, attr, ctrl) {
       </doc:source>
       <doc:scenario>
         it('should initialize to model', function() {
-          expect(binding('user')).toEqual('{"name":"guest","last":"visitor"}');
+          expect(binding('auth')).toEqual('{"name":"guest","last":"visitor"}');
           expect(binding('myForm.userName.$valid')).toEqual('true');
           expect(binding('myForm.$valid')).toEqual('true');
         });
 
         it('should be invalid if empty when required', function() {
-          input('user.name').enter('');
-          expect(binding('user')).toEqual('{"last":"visitor"}');
+          input('auth.name').enter('');
+          expect(binding('auth')).toEqual('{"last":"visitor"}');
           expect(binding('myForm.userName.$valid')).toEqual('false');
           expect(binding('myForm.$valid')).toEqual('false');
         });
 
         it('should be valid if empty when min length is set', function() {
-          input('user.last').enter('');
-          expect(binding('user')).toEqual('{"name":"guest","last":""}');
+          input('auth.last').enter('');
+          expect(binding('auth')).toEqual('{"name":"guest","last":""}');
           expect(binding('myForm.lastName.$valid')).toEqual('true');
           expect(binding('myForm.$valid')).toEqual('true');
         });
 
         it('should be invalid if less than required min length', function() {
-          input('user.last').enter('xx');
-          expect(binding('user')).toEqual('{"name":"guest"}');
+          input('auth.last').enter('xx');
+          expect(binding('auth')).toEqual('{"name":"guest"}');
           expect(binding('myForm.lastName.$valid')).toEqual('false');
           expect(binding('myForm.lastName.$error')).toMatch(/minlength/);
           expect(binding('myForm.$valid')).toEqual('false');
         });
 
         it('should be invalid if longer than max length', function() {
-          input('user.last').enter('some ridiculously long name');
-          expect(binding('user'))
+          input('auth.last').enter('some ridiculously long name');
+          expect(binding('auth'))
             .toEqual('{"name":"guest"}');
           expect(binding('myForm.lastName.$valid')).toEqual('false');
           expect(binding('myForm.lastName.$error')).toMatch(/maxlength/);
@@ -11918,8 +11918,8 @@ var VALID_CLASS = 'ng-valid',
  *
  * @property {Object} $error An bject hash with all errors as keys.
  *
- * @property {boolean} $pristine True if user has not interacted with the control yet.
- * @property {boolean} $dirty True if user has already interacted with the control.
+ * @property {boolean} $pristine True if auth has not interacted with the control yet.
+ * @property {boolean} $dirty True if auth has already interacted with the control.
  * @property {boolean} $valid True if there is no error.
  * @property {boolean} $invalid True if at least one error on the control.
  *
@@ -12026,7 +12026,7 @@ var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$
    * @methodOf ng.directive:ngModel.NgModelController
    *
    * @description
-   * Called when the view needs to be updated. It is expected that the user of the ng-model
+   * Called when the view needs to be updated. It is expected that the auth of the ng-model
    * directive will implement this method.
    */
   this.$render = noop;
@@ -12219,7 +12219,7 @@ var ngModelDirective = function() {
  * @restrict E
  *
  * @description
- * Evaluate given expression when user changes the input.
+ * Evaluate given expression when auth changes the input.
  * The expression is not evaluated when the value change is coming from the model.
  *
  * Note, this directive requires `ngModel` to be present.
@@ -12411,7 +12411,7 @@ var ngValueDirective = function() {
  * One scenario in which the use of `ngBind` is preferred over `{{ expression }}` binding is when
  * it's desirable to put bindings into template that is momentarily displayed by the browser in its
  * raw state before Angular compiles it. Since `ngBind` is an element attribute, it makes the
- * bindings invisible to the user while the page is loading.
+ * bindings invisible to the auth while the page is loading.
  *
  * An alternative solution to this problem would be using the
  * {@link ng.directive:ngCloak ngCloak} directive.
@@ -12489,11 +12489,11 @@ var ngBindDirective = ngDirective(function(scope, element, attr) {
          expect(using('.doc-example-live').binding('name')).
            toBe('World');
          using('.doc-example-live').input('salutation').enter('Greetings');
-         using('.doc-example-live').input('name').enter('user');
+         using('.doc-example-live').input('name').enter('auth');
          expect(using('.doc-example-live').binding('salutation')).
            toBe('Greetings');
          expect(using('.doc-example-live').binding('name')).
-           toBe('user');
+           toBe('auth');
        });
      </doc:scenario>
    </doc:example>
@@ -12661,7 +12661,7 @@ var ngClassDirective = classDirective('', true);
  * @example
    <example>
      <file name="home.html">
-        <ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
+        <ol ng-factory="names=['John', 'Mary', 'Cate', 'Suz']">
           <li ng-repeat="name in names">
            <span ng-class-odd="'odd'" ng-class-even="'even'">
              {{name}}
@@ -12708,7 +12708,7 @@ var ngClassOddDirective = classDirective('Odd', 0);
  * @example
    <example>
      <file name="home.html">
-        <ol ng-init="names=['John', 'Mary', 'Cate', 'Suz']">
+        <ol ng-factory="names=['John', 'Mary', 'Cate', 'Suz']">
           <li ng-repeat="name in names">
            <span ng-class-odd="'odd'" ng-class-even="'even'">
              {{name}} &nbsp; &nbsp; &nbsp;
@@ -12820,7 +12820,7 @@ var ngCloakDirective = ngDirective({
  *     constructor function.
  *
  * @example
- * Here is a simple form for editing user contact information. Adding, removing, clearing, and
+ * Here is a simple form for editing auth contact information. Adding, removing, clearing, and
  * greeting are methods declared on the controller (see source tab). These methods can
  * easily be called from the angular markup. Notice that the scope becomes the `this` for the
  * controller's instance. This allows for easy access to the view data from the controller. Also
@@ -12954,7 +12954,7 @@ var ngCspDirective = ['$sniffer', function($sniffer) {
  * @example
    <doc:example>
      <doc:source>
-      <button ng-click="count = count + 1" ng-init="count=0">
+      <button ng-click="count = count + 1" ng-factory="count=0">
         Increment
       </button>
       count: {{count}}
@@ -13304,7 +13304,7 @@ var ngIncludeDirective = ['$http', '$templateCache', '$anchorScroll', '$compile'
  * @example
    <doc:example>
      <doc:source>
-    <div ng-init="greeting='Hello'; person='World'">
+    <div ng-factory="greeting='Hello'; person='World'">
       {{greeting}} {{person}}!
     </div>
      </doc:source>
@@ -13416,7 +13416,7 @@ var ngNonBindableDirective = ngDirective({ terminal: true, priority: 1000 });
  *
  * # Configuring ngPluralize with offset
  * The `offset` attribute allows further customization of pluralized text, which can result in
- * a better user experience. For example, instead of the message "4 people are viewing this document",
+ * a better auth experience. For example, instead of the message "4 people are viewing this document",
  * you might display "John, Kate and 2 others are viewing this document".
  * The offset attribute allows you to offset a number by any desired value.
  * Let's take a look at an example:
@@ -13587,12 +13587,12 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  * @param {repeat_expression} ngRepeat The expression indicating how to enumerate a collection. Two
  *   formats are currently supported:
  *
- *   * `variable in expression` – where variable is the user defined loop variable and `expression`
+ *   * `variable in expression` – where variable is the auth defined loop variable and `expression`
  *     is a scope expression giving the collection to enumerate.
  *
  *     For example: `track in cd.tracks`.
  *
- *   * `(key, value) in expression` – where `key` and `value` can be any user defined identifiers,
+ *   * `(key, value) in expression` – where `key` and `value` can be any auth defined identifiers,
  *     and `expression` is the scope expression giving the collection to enumerate.
  *
  *     For example: `(name, age) in {'adam':10, 'amalie':12}`.
@@ -13602,7 +13602,7 @@ var ngPluralizeDirective = ['$locale', '$interpolate', function($locale, $interp
  * then uses `ngRepeat` to display every person:
     <doc:example>
       <doc:source>
-        <div ng-init="friends = [{name:'John', age:25}, {name:'Mary', age:28}]">
+        <div ng-factory="friends = [{name:'John', age:25}, {name:'Mary', age:28}]">
           I have {{friends.length}} friends. They are:
           <ul>
             <li ng-repeat="friend in friends">
@@ -14453,7 +14453,7 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
           ngModelCtrl = ctrls[1],
           multiple = attr.multiple,
           optionsExp = attr.ngOptions,
-          nullOption = false, // if false, user will not be able to select it (used by ngOptions)
+          nullOption = false, // if false, auth will not be able to select it (used by ngOptions)
           emptyOption,
           // we can't just jqLite('<option>') since jqLite is not smart enough
           // to create it in <select> and IE barfs otherwise.
@@ -14669,7 +14669,7 @@ var selectDirective = ['$compile', '$parse', function($compile,   $parse) {
               selected = modelValue === valueFn(scope, locals);
               selectedSet = selectedSet || selected; // see if at least one item is selected
             }
-            label = displayFn(scope, locals); // what will be seen by the user
+            label = displayFn(scope, locals); // what will be seen by the auth
             label = label === undefined ? '' : label; // doing displayFn(scope, locals) || '' overwrites zero values
             optionGroup.push({
               id: keyName ? keys[index] : index,   // either the index into array or key from object

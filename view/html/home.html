@@ -9,7 +9,10 @@
 </head>
 <body>
 <div ng-switch="view">
-	<div ng-switch-default="sign" ng-include="'html/user/sign.html'"></div>
+	<div ng-switch-default="auth" ng-include="'html/auth/sign.html'"></div>
+	<div ng-switch-when="home">
+		home
+	</div>
 </div>
 </body>
 </html>
