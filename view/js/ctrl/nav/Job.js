@@ -8,4 +8,4 @@ ctrl.Job = function($scope) {
 };
 
 ctrl.Job.path = '/job';
-ctrl.Job.url = 'job.html';
+ctrl.Job.url = 'html/job.html';

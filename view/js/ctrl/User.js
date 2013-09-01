@@ -21,7 +21,7 @@ ctrl.User = function ($scope, HttpService) {
 	};
 
 	$scope.signUp = function () {
-		if ($scope.email.length <= 0 || $scope.password.length < 6 || $scope.password != $scope.repassword) {
+		if ($scope.email.length <= 0 || $scope.password.length < 6) {
 			return;
 		}
 		HttpService.post("/user",

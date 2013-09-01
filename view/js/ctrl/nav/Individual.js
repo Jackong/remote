@@ -8,4 +8,4 @@ ctrl.Individual = function($scope) {
 };
 
 ctrl.Individual.path = '/individual';
-ctrl.Individual.url = 'individual.html';
+ctrl.Individual.url = 'html/individual.html';

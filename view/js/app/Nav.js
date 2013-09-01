@@ -6,7 +6,9 @@
 
 app.Nav = angular.module('app.Nav', ['mod.prov', 'mod.service']);
 app.Nav.config(
-    ['RouterProvider', function(RouterProvider) {
+    ['RouterProvider', "$interpolateProvider", function(RouterProvider, $interpolateProvider) {
+	    $interpolateProvider.startSymbol("[[");
+	    $interpolateProvider.endSymbol("]]");
         RouterProvider.attach([ctrl.Home, ctrl.Recruit, ctrl.Job, ctrl.Team, ctrl.Individual])
     }]
 );

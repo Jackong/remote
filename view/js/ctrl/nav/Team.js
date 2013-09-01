@@ -8,4 +8,4 @@ ctrl.Team = function($scope) {
 };
 
 ctrl.Team.path = '/team';
-ctrl.Team.url = 'team.html';
+ctrl.Team.url = 'html/team.html';
