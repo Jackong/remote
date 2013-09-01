@@ -11,7 +11,8 @@ ctrl.Nav = function ($scope, $location) {
         {path: ctrl.Recruit.path, name: "招聘", scripts:ctrl.Recruit.scripts},
         {path: ctrl.Job.path, name: "求职", scripts:ctrl.Job.scripts},
         {path: ctrl.Team.path,  name: "团队", scripts:ctrl.Team.scripts},
-        {path: ctrl.Individual.path, name: "个人", scripts:ctrl.Individual.scripts}
+        {path: ctrl.Individual.path, name: "个人", scripts:ctrl.Individual.scripts},
+        {path: ctrl.Feedback.path, name: "反馈", scripts:ctrl.Feedback.scripts}
     ];
 
     $scope.nav = function (tab) {
